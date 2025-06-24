@@ -1,0 +1,103 @@
+[Skip to main content](https://intel.github.io/intel-npu-acceleration-library/python/<#main-content>) Back to top 
+`Ctrl`+`K`
+[ Intel® NPU Acceleration Library documentation ](https://intel.github.io/intel-npu-acceleration-library/python/<../index.html>)
+Search `Ctrl`+`K`
+Library overview:
+  * [Quickstart](https://intel.github.io/intel-npu-acceleration-library/python/<../index.html>)
+  * [NPU overview](https://intel.github.io/intel-npu-acceleration-library/python/<../npu.html>)
+  * [Basic usage](https://intel.github.io/intel-npu-acceleration-library/python/<../usage.html>)
+  * [Advanced Setup](https://intel.github.io/intel-npu-acceleration-library/python/<../setup.html>)
+
+
+Applications:
+  * [Large Language models](https://intel.github.io/intel-npu-acceleration-library/python/<../llm.html>)
+  * [Decoding LLM performance](https://intel.github.io/intel-npu-acceleration-library/python/<../llm_performance.html>)
+
+
+Developements guide:
+  * [Developer Guide](https://intel.github.io/intel-npu-acceleration-library/python/<../developer.html>)
+  * [Adding New Operations in the Library](https://intel.github.io/intel-npu-acceleration-library/python/<../adding_operations.html>)
+
+
+API Reference:
+  * [Python API Reference](https://intel.github.io/intel-npu-acceleration-library/python/<intel_npu_acceleration_library.html>)
+    * [intel_npu_acceleration_library.backend package](https://intel.github.io/intel-npu-acceleration-library/python/<intel_npu_acceleration_library.backend.html>)
+    * [intel_npu_acceleration_library.nn package](https://intel.github.io/intel-npu-acceleration-library/python/<intel_npu_acceleration_library.nn.html>)
+    * [intel_npu_acceleration_library.functional package](https://intel.github.io/intel-npu-acceleration-library/python/<#>)
+  * [C++ API Reference](https://intel.github.io/intel-npu-acceleration-library/python/<../cpp_reference.html>)
+
+
+  * [ .rst ](https://intel.github.io/intel-npu-acceleration-library/python/<../_sources/python/intel_npu_acceleration_library.functional.rst>)
+  * .pdf
+
+
+# intel_npu_acceleration_library.functional package
+##  Contents 
+  * [Submodules](https://intel.github.io/intel-npu-acceleration-library/python/<#submodules>)
+  * [intel_npu_acceleration_library.functional.scaled_dot_product_attention module](https://intel.github.io/intel-npu-acceleration-library/python/<#module-intel_npu_acceleration_library.functional.scaled_dot_product_attention>)
+    * `[scaled_dot_product_attention()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.functional.scaled_dot_product_attention.scaled_dot_product_attention>)
+  * [Module contents](https://intel.github.io/intel-npu-acceleration-library/python/<#module-intel_npu_acceleration_library.functional>)
+    * `[scaled_dot_product_attention()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.functional.scaled_dot_product_attention>)
+
+
+# intel_npu_acceleration_library.functional package[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel-npu-acceleration-library-functional-package> "Link to this heading")
+## Submodules[#](https://intel.github.io/intel-npu-acceleration-library/python/<#submodules> "Link to this heading")
+## intel_npu_acceleration_library.functional.scaled_dot_product_attention module[#](https://intel.github.io/intel-npu-acceleration-library/python/<#module-intel_npu_acceleration_library.functional.scaled_dot_product_attention> "Link to this heading")
+intel_npu_acceleration_library.functional.scaled_dot_product_attention.scaled_dot_product_attention(_query :Tensor_, _key :Tensor_, _value :Tensor_, _attn_mask :Tensor|None=None_, _dropout_p :float=0.0_, _is_causal :bool=False_, _scale :float|None=None_) → Tensor[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.functional.scaled_dot_product_attention.scaled_dot_product_attention> "Link to this definition")
+    
+Execute SDPA kernel.
+Parameters:
+    
+  * **query** (_torch.Tensor_) – query tensor
+  * **key** (_torch.Tensor_) – key tensor
+  * **value** (_torch.Tensor_) – value tensor
+  * **attn_mask** (_torch.Tensor_ _,__optional_) – attention mask tensor. Defaults to None.
+  * **dropout_p** (_float_ _,__optional_) – optional dropout. Defaults to 0.0.
+  * **is_causal** (_bool_ _,__optional_) – enable causal mask. Defaults to False.
+  * **scale** (_Optional_ _[__float_ _]__,__optional_) – custom scale. Defaults to None.
+
+
+Raises:
+    
+**RuntimeError** – _description_
+Returns:
+    
+_description_
+Return type:
+    
+torch.Tensor
+## Module contents[#](https://intel.github.io/intel-npu-acceleration-library/python/<#module-intel_npu_acceleration_library.functional> "Link to this heading")
+intel_npu_acceleration_library.functional.scaled_dot_product_attention(_query :Tensor_, _key :Tensor_, _value :Tensor_, _attn_mask :Tensor|None=None_, _dropout_p :float=0.0_, _is_causal :bool=False_, _scale :float|None=None_) → Tensor[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.functional.scaled_dot_product_attention> "Link to this definition")
+    
+Execute SDPA kernel.
+Parameters:
+    
+  * **query** (_torch.Tensor_) – query tensor
+  * **key** (_torch.Tensor_) – key tensor
+  * **value** (_torch.Tensor_) – value tensor
+  * **attn_mask** (_torch.Tensor_ _,__optional_) – attention mask tensor. Defaults to None.
+  * **dropout_p** (_float_ _,__optional_) – optional dropout. Defaults to 0.0.
+  * **is_causal** (_bool_ _,__optional_) – enable causal mask. Defaults to False.
+  * **scale** (_Optional_ _[__float_ _]__,__optional_) – custom scale. Defaults to None.
+
+
+Raises:
+    
+**RuntimeError** – _description_
+Returns:
+    
+_description_
+Return type:
+    
+torch.Tensor
+[ previous intel_npu_acceleration_library.nn package ](https://intel.github.io/intel-npu-acceleration-library/python/<intel_npu_acceleration_library.nn.html> "previous page") [ next C++ API Reference ](https://intel.github.io/intel-npu-acceleration-library/python/<../cpp_reference.html> "next page")
+Contents 
+  * [Submodules](https://intel.github.io/intel-npu-acceleration-library/python/<#submodules>)
+  * [intel_npu_acceleration_library.functional.scaled_dot_product_attention module](https://intel.github.io/intel-npu-acceleration-library/python/<#module-intel_npu_acceleration_library.functional.scaled_dot_product_attention>)
+    * `[scaled_dot_product_attention()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.functional.scaled_dot_product_attention.scaled_dot_product_attention>)
+  * [Module contents](https://intel.github.io/intel-npu-acceleration-library/python/<#module-intel_npu_acceleration_library.functional>)
+    * `[scaled_dot_product_attention()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.functional.scaled_dot_product_attention>)
+
+
+By Intel Corporation 
+© Copyright 2024, Intel Corporation. 

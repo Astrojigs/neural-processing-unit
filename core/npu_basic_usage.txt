@@ -1,0 +1,106 @@
+[Skip to main content](https://intel.github.io/intel-npu-acceleration-library/<#main-content>) Back to top 
+`Ctrl`+`K`
+[ Intel® NPU Acceleration Library documentation ](https://intel.github.io/intel-npu-acceleration-library/<index.html>)
+Search `Ctrl`+`K`
+Library overview:
+  * [Quickstart](https://intel.github.io/intel-npu-acceleration-library/<index.html>)
+  * [NPU overview](https://intel.github.io/intel-npu-acceleration-library/<npu.html>)
+  * [Basic usage](https://intel.github.io/intel-npu-acceleration-library/<#>)
+  * [Advanced Setup](https://intel.github.io/intel-npu-acceleration-library/<setup.html>)
+
+
+Applications:
+  * [Large Language models](https://intel.github.io/intel-npu-acceleration-library/<llm.html>)
+  * [Decoding LLM performance](https://intel.github.io/intel-npu-acceleration-library/<llm_performance.html>)
+
+
+Developements guide:
+  * [Developer Guide](https://intel.github.io/intel-npu-acceleration-library/<developer.html>)
+  * [Adding New Operations in the Library](https://intel.github.io/intel-npu-acceleration-library/<adding_operations.html>)
+
+
+API Reference:
+  * [Python API Reference](https://intel.github.io/intel-npu-acceleration-library/<python/intel_npu_acceleration_library.html>)
+    * [intel_npu_acceleration_library.backend package](https://intel.github.io/intel-npu-acceleration-library/<python/intel_npu_acceleration_library.backend.html>)
+    * [intel_npu_acceleration_library.nn package](https://intel.github.io/intel-npu-acceleration-library/<python/intel_npu_acceleration_library.nn.html>)
+    * [intel_npu_acceleration_library.functional package](https://intel.github.io/intel-npu-acceleration-library/<python/intel_npu_acceleration_library.functional.html>)
+  * [C++ API Reference](https://intel.github.io/intel-npu-acceleration-library/<cpp_reference.html>)
+
+
+  * [ .md ](https://intel.github.io/intel-npu-acceleration-library/<_sources/usage.md>)
+  * .pdf
+
+
+# Basic usage
+##  Contents 
+  * [Run a single MatMul in the NPU](https://intel.github.io/intel-npu-acceleration-library/<#run-a-single-matmul-in-the-npu>)
+  * [Compile a model for the NPU](https://intel.github.io/intel-npu-acceleration-library/<#compile-a-model-for-the-npu>)
+  * [Training (**Experimental!**)](https://intel.github.io/intel-npu-acceleration-library/<#training-experimental>)
+
+
+# Basic usage[#](https://intel.github.io/intel-npu-acceleration-library/<#basic-usage> "Link to this heading")
+For implemented examples, please check the `examples` folder
+## Run a single MatMul in the NPU[#](https://intel.github.io/intel-npu-acceleration-library/<#run-a-single-matmul-in-the-npu> "Link to this heading")
+```
+from intel_npu_acceleration_library.backend import MatMul
+import numpy as np
+inC, outC, batch = ... # Define your own values
+# Create both inputs
+X1 = np.random.uniform(-1, 1, (batch, inC)).astype(np.float16)
+X2 = np.random.uniform(-1, 1, (outC, inC)).astype(np.float16)
+mm = MatMul(inC, outC, batch, profile=False)
+result = mm.run(X1, X2)
+
+```
+
+## Compile a model for the NPU[#](https://intel.github.io/intel-npu-acceleration-library/<#compile-a-model-for-the-npu> "Link to this heading")
+If you have `pytorch`>=2.0.0 installed you can use torch compile to optimize your model for the NPU
+```
+import intel_npu_acceleration_library
+import torch
+# Compile model for the NPU
+# model a torch.nn.Module class. Model can be quantized JIT
+optimized_model = torch.compile(model, backend="npu")
+# Use the model as usual
+
+```
+
+In windows torch.compile is not supported yet. So you might want to use the explicit function `intel_npu_acceleration_library.compile`. This is true also if you use a `pytorch` version < 2.0.0
+To do this, you just need to call the `compile` function with your model and the compiler configuration `CompilerConfig` to compile and optimize the model for the NPU.
+```
+import intel_npu_acceleration_library
+from intel_npu_acceleration_library.compiler import CompilerConfig
+compiler_conf = CompilerConfig(dtype=torch.int8)
+optimized_model = intel_npu_acceleration_library.compile(model, compiler_conf)
+# Use the model as usual
+
+```
+
+To compile and optimize a single layer of a model to be pushed to the NPU as one block, you can set `use_to=True` in the the compiler configuration `CompilerConfig`.
+```
+import intel_npu_acceleration_library
+from intel_npu_acceleration_library.compiler import CompilerConfig
+compiler_conf = CompilerConfig(use_to=True, dtype=torch.int8)
+optimized_block = intel_npu_acceleration_library.compile(single_block, compiler_conf)
+
+```
+
+## Training (**Experimental!**)[#](https://intel.github.io/intel-npu-acceleration-library/<#training-experimental> "Link to this heading")
+It is possible to use Intel® NPU Acceleration Library to train a model. As before you just need to call the `compile` function, this time with `training=True`. This allows to use the same training script you use in other device with a very minimal modifications.
+```
+import intel_npu_acceleration_library
+from intel_npu_acceleration_library.compiler import CompilerConfig
+compiler_conf = CompilerConfig(dtype=torch.float32, training=True)
+compiled_model = intel_npu_acceleration_library.compile(model, compiler_conf)
+
+```
+
+[ previous Quick overview of Intel’s Neural Processing Unit (NPU) ](https://intel.github.io/intel-npu-acceleration-library/<npu.html> "previous page") [ next Advanced Setup ](https://intel.github.io/intel-npu-acceleration-library/<setup.html> "next page")
+Contents 
+  * [Run a single MatMul in the NPU](https://intel.github.io/intel-npu-acceleration-library/<#run-a-single-matmul-in-the-npu>)
+  * [Compile a model for the NPU](https://intel.github.io/intel-npu-acceleration-library/<#compile-a-model-for-the-npu>)
+  * [Training (**Experimental!**)](https://intel.github.io/intel-npu-acceleration-library/<#training-experimental>)
+
+
+By Intel Corporation 
+© Copyright 2024, Intel Corporation. 

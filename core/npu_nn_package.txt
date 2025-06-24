@@ -1,0 +1,676 @@
+[Skip to main content](https://intel.github.io/intel-npu-acceleration-library/python/<#main-content>) Back to top 
+`Ctrl`+`K`
+[ Intel® NPU Acceleration Library documentation ](https://intel.github.io/intel-npu-acceleration-library/python/<../index.html>)
+Search `Ctrl`+`K`
+Library overview:
+  * [Quickstart](https://intel.github.io/intel-npu-acceleration-library/python/<../index.html>)
+  * [NPU overview](https://intel.github.io/intel-npu-acceleration-library/python/<../npu.html>)
+  * [Basic usage](https://intel.github.io/intel-npu-acceleration-library/python/<../usage.html>)
+  * [Advanced Setup](https://intel.github.io/intel-npu-acceleration-library/python/<../setup.html>)
+
+
+Applications:
+  * [Large Language models](https://intel.github.io/intel-npu-acceleration-library/python/<../llm.html>)
+  * [Decoding LLM performance](https://intel.github.io/intel-npu-acceleration-library/python/<../llm_performance.html>)
+
+
+Developements guide:
+  * [Developer Guide](https://intel.github.io/intel-npu-acceleration-library/python/<../developer.html>)
+  * [Adding New Operations in the Library](https://intel.github.io/intel-npu-acceleration-library/python/<../adding_operations.html>)
+
+
+API Reference:
+  * [Python API Reference](https://intel.github.io/intel-npu-acceleration-library/python/<intel_npu_acceleration_library.html>)
+    * [intel_npu_acceleration_library.backend package](https://intel.github.io/intel-npu-acceleration-library/python/<intel_npu_acceleration_library.backend.html>)
+    * [intel_npu_acceleration_library.nn package](https://intel.github.io/intel-npu-acceleration-library/python/<#>)
+    * [intel_npu_acceleration_library.functional package](https://intel.github.io/intel-npu-acceleration-library/python/<intel_npu_acceleration_library.functional.html>)
+  * [C++ API Reference](https://intel.github.io/intel-npu-acceleration-library/python/<../cpp_reference.html>)
+
+
+  * [ .rst ](https://intel.github.io/intel-npu-acceleration-library/python/<../_sources/python/intel_npu_acceleration_library.nn.rst>)
+  * .pdf
+
+
+# intel_npu_acceleration_library.nn package
+##  Contents 
+  * [Submodules](https://intel.github.io/intel-npu-acceleration-library/python/<#submodules>)
+  * [intel_npu_acceleration_library.nn.autograd module](https://intel.github.io/intel-npu-acceleration-library/python/<#intel-npu-acceleration-library-nn-autograd-module>)
+    * `[AutogradMatMul`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.autograd.AutogradMatMul>)
+      * `[AutogradMatMul.backward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.autograd.AutogradMatMul.backward>)
+      * `[AutogradMatMul.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.autograd.AutogradMatMul.forward>)
+  * [intel_npu_acceleration_library.nn.linear module](https://intel.github.io/intel-npu-acceleration-library/python/<#intel-npu-acceleration-library-nn-linear-module>)
+    * `[Linear`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.Linear>)
+      * `[Linear.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.Linear.forward>)
+      * `[Linear.fromTensor()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.Linear.fromTensor>)
+      * `[Linear.fromTorch()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.Linear.fromTorch>)
+    * `[QuantizedLinear`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.QuantizedLinear>)
+      * `[QuantizedLinear.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.QuantizedLinear.forward>)
+  * [intel_npu_acceleration_library.nn.llm module](https://intel.github.io/intel-npu-acceleration-library/python/<#intel-npu-acceleration-library-nn-llm-module>)
+    * `[FusedLlamaMLP`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.FusedLlamaMLP>)
+      * `[FusedLlamaMLP.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.FusedLlamaMLP.forward>)
+      * `[FusedLlamaMLP.fromTorch()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.FusedLlamaMLP.fromTorch>)
+    * `[LlamaAttention`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.LlamaAttention>)
+      * `[LlamaAttention.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.LlamaAttention.forward>)
+      * `[LlamaAttention.fromTorch()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.LlamaAttention.fromTorch>)
+    * `[PhiMLP`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.PhiMLP>)
+      * `[PhiMLP.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.PhiMLP.forward>)
+      * `[PhiMLP.fromTorch()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.PhiMLP.fromTorch>)
+    * `[generate_with_static_shape()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.generate_with_static_shape>)
+    * `[lshift_insert()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.lshift_insert>)
+    * `[warm_up_decoder_model()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.warm_up_decoder_model>)
+  * [Module contents](https://intel.github.io/intel-npu-acceleration-library/python/<#module-intel_npu_acceleration_library.nn>)
+    * `[Conv2d`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Conv2d>)
+      * `[Conv2d.bias`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Conv2d.bias>)
+      * `[Conv2d.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Conv2d.forward>)
+      * `[Conv2d.fromTorch()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Conv2d.fromTorch>)
+      * `[Conv2d.weight`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Conv2d.weight>)
+    * `[Linear`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Linear>)
+      * `[Linear.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Linear.forward>)
+      * `[Linear.fromTensor()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Linear.fromTensor>)
+      * `[Linear.fromTorch()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Linear.fromTorch>)
+    * `[LlamaAttention`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.LlamaAttention>)
+      * `[LlamaAttention.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.LlamaAttention.forward>)
+      * `[LlamaAttention.fromTorch()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.LlamaAttention.fromTorch>)
+    * `[Module`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Module>)
+      * `[Module.create_model()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Module.create_model>)
+      * `[Module.extract_tensors_from_arguments()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Module.extract_tensors_from_arguments>)
+      * `[Module.factory_forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Module.factory_forward>)
+      * `[Module.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Module.forward>)
+      * `[Module.to()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Module.to>)
+    * `[PhiMLP`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.PhiMLP>)
+      * `[PhiMLP.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.PhiMLP.forward>)
+      * `[PhiMLP.fromTorch()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.PhiMLP.fromTorch>)
+    * `[QuantizedLinear`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.QuantizedLinear>)
+      * `[QuantizedLinear.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.QuantizedLinear.forward>)
+
+
+# intel_npu_acceleration_library.nn package[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel-npu-acceleration-library-nn-package> "Link to this heading")
+## Submodules[#](https://intel.github.io/intel-npu-acceleration-library/python/<#submodules> "Link to this heading")
+## intel_npu_acceleration_library.nn.autograd module[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel-npu-acceleration-library-nn-autograd-module> "Link to this heading")
+_class_ intel_npu_acceleration_library.nn.autograd.AutogradMatMul(_* args_, _** kwargs_)[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.autograd.AutogradMatMul> "Link to this definition")
+    
+Bases: `Function`
+Autograd module for Linear operation.
+_static_ backward(_ctx_ , _grad_output :Tensor_) → Iterable[Tensor|None][#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.autograd.AutogradMatMul.backward> "Link to this definition")
+    
+Run a linear backward pass.
+grad_output shape: [batch, output_channels] x shape: [batch, input_channels] w shape: [output_channels, input_channels]
+Expected gradients dl_dx shape: [batch, input_channels] dl_dw shape: [output_channels, input_channels]
+Equivalent pytorch code: dl_dx = grad_output @ w.to(torch.float32) dl_dw = (x.T @ grad_output).T
+Parameters:
+    
+  * **ctx** (_Any_) – the autograd context
+  * **grad_output** (_torch.Tensor_) – output gradient
+
+
+Returns:
+    
+Input and parameters gradients
+Return type:
+    
+Iterable[Union[torch.Tensor, None]]
+_static_ forward(_ctx_ , _x :Tensor_, _w :Tensor_, _scale :Tensor|None=None_) → Tensor[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.autograd.AutogradMatMul.forward> "Link to this definition")
+    
+Run a linear forward pass. Depending on the datatype of the weights it runs a float or quantized operation.
+> Equivalent pytorch code: result = x @ w.T
+Parameters:
+    
+  * **ctx** (_Any_) – the autograd context
+  * **x** (_torch.Tensor_) – Activation tensor. Its dtype must be torch.float16
+  * **w** (_torch.Tensor_) – Weight tensor. Its dtype must be torch.float16
+  * **scale** (_Optional_ _[__torch.Tensor_ _]__,__optional_) – Quantization scale. If weights.dtype == torch.int8 then it must be set. Defaults to None.
+
+
+Returns:
+    
+result
+Return type:
+    
+torch.Tensor
+## intel_npu_acceleration_library.nn.linear module[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel-npu-acceleration-library-nn-linear-module> "Link to this heading")
+_class_ intel_npu_acceleration_library.nn.linear.Linear(_weight :Tensor_, _bias :Tensor|None=None_)[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.Linear> "Link to this definition")
+    
+Bases: `Module`
+Torch Linear operation NPU backend.
+forward(_x :Tensor_) → Tensor[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.Linear.forward> "Link to this definition")
+    
+Torch module forward method.
+Parameters:
+    
+**x** (_torch.Tensor_) – Input tensor
+Returns:
+    
+result
+Return type:
+    
+torch.Tensor
+_static_ fromTensor(_weight :Tensor_, _bias :Tensor|None_, _dtype :dtype=torch.float16_) → [Linear](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.Linear> "intel_npu_acceleration_library.nn.linear.Linear")|[QuantizedLinear](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.QuantizedLinear> "intel_npu_acceleration_library.nn.linear.QuantizedLinear")[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.Linear.fromTensor> "Link to this definition")
+    
+Generate a NPU Linear layer from a torch one.
+Parameters:
+    
+  * **weight** (_torch.Tensor_) – the original weight tensor
+  * **bias** (_Optional_ _[__torch.Tensor_ _]_) – the original bias tensor
+  * **dtype** (_torch.dtype_) – the desired datatype
+
+
+Raises:
+    
+**RuntimeError** – dtype not supported
+Returns:
+    
+A NPU linear layer
+Return type:
+    
+Union[[Linear](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.Linear> "intel_npu_acceleration_library.nn.linear.Linear"), [QuantizedLinear](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.QuantizedLinear> "intel_npu_acceleration_library.nn.linear.QuantizedLinear")]
+_static_ fromTorch(_layer :Linear_, _dtype :dtype=torch.float16_) → [Linear](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.Linear> "intel_npu_acceleration_library.nn.linear.Linear")|[QuantizedLinear](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.QuantizedLinear> "intel_npu_acceleration_library.nn.linear.QuantizedLinear")[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.Linear.fromTorch> "Link to this definition")
+    
+Generate a NPU Linear layer from a torch one.
+Parameters:
+    
+  * **layer** (_torch.nn.Linear_) – the original torch.nn.Linear model to run on the NPU
+  * **dtype** (_torch.dtype_) – the desired datatype
+
+
+Returns:
+    
+A NPU linear layer
+Return type:
+    
+Union[[Linear](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.Linear> "intel_npu_acceleration_library.nn.linear.Linear"), [QuantizedLinear](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.QuantizedLinear> "intel_npu_acceleration_library.nn.linear.QuantizedLinear")]
+_class_ intel_npu_acceleration_library.nn.linear.QuantizedLinear(_weight :Tensor_, _scale :Tensor_, _bias :Tensor|None=None_)[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.QuantizedLinear> "Link to this definition")
+    
+Bases: `Module`
+Torch Quantized Linear operation NPU backend.
+forward(_x :Tensor_) → Tensor[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.QuantizedLinear.forward> "Link to this definition")
+    
+Torch module forward method.
+Parameters:
+    
+**x** (_torch.Tensor_) – Input tensor
+Raises:
+    
+**RuntimeError** – Training is not supported for QuantizedLinear layer. Use .eval() to do inference only
+Returns:
+    
+result
+Return type:
+    
+torch.Tensor
+## intel_npu_acceleration_library.nn.llm module[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel-npu-acceleration-library-nn-llm-module> "Link to this heading")
+_class_ intel_npu_acceleration_library.nn.llm.FusedLlamaMLP(_parameters :List[Tensor]_)[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.FusedLlamaMLP> "Link to this definition")
+    
+Bases: `Module`
+LLAMA MLP operation NPU backend.
+forward(_x :Tensor_) → Tensor[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.FusedLlamaMLP.forward> "Link to this definition")
+    
+Torch module forward method.
+Parameters:
+    
+**x** (_torch.Tensor_) – Input tensor
+Returns:
+    
+result
+Return type:
+    
+torch.Tensor
+_static_ fromTorch(_layer :Module_, _dtype :dtype=torch.float16_) → [FusedLlamaMLP](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.FusedLlamaMLP> "intel_npu_acceleration_library.nn.llm.FusedLlamaMLP")[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.FusedLlamaMLP.fromTorch> "Link to this definition")
+    
+Generate a NPU LlamaMLP layer from a transformer LlamaMLP one.
+Parameters:
+    
+  * **layer** (_torch.nn.Linear_) – the original LlamaMLP model to run on the NPU
+  * **dtype** (_torch.dtype_) – the desired datatype
+
+
+Returns:
+    
+A NPU LlamaMLP layer
+Return type:
+    
+[FusedLlamaMLP](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.FusedLlamaMLP> "intel_npu_acceleration_library.nn.llm.FusedLlamaMLP")
+_class_ intel_npu_acceleration_library.nn.llm.LlamaAttention(_config :LlamaConfig_, _q_weights :Tensor_, _kv_weights :Tensor_, _o_proj :Tensor_, _rotary_emb :Module_, _dtype :dtype=torch.float16_, _layer_idx :int|None=None_)[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.LlamaAttention> "Link to this definition")
+    
+Bases: `Module`
+LlamaAttention operation NPU backend.
+forward(_hidden_states :Tensor_, _attention_mask :Tensor|None=None_, _position_ids :Tensor|None=None_, _past_key_value :Cache|None=None_, _output_attentions :bool|None=False_, _use_cache :bool|None=False_, _cache_position :LongTensor|None=None_, _position_embeddings :Tuple[Tensor,Tensor]|None=None_)[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.LlamaAttention.forward> "Link to this definition")
+    
+Torch module forward method.
+Parameters:
+    
+  * **hidden_states** (_torch.Tensor_) – input to the layer of shape (batch, seq_len, embed_dim)
+  * **attention_mask** (_Optional_ _[__torch.Tensor_ _]__,__optional_) – attention mask of shape (batch_size, sequence_length). Defaults to None.
+  * **position_ids** (_Optional_ _[__torch.Tensor_ _]__,__optional_) – position_ids of shape (batch_size, sequence_length). Defaults to None.
+  * **past_key_value** (_Optional_ _[__Cache_ _]__,__optional_) – Pre-computed hidden-states (key and values in the self-attention blocks). Defaults to None.
+  * **output_attentions** (_Optional_ _[__bool_ _]__,__optional_) – Whether or not to return the attentions tensors of all attention layers.. Defaults to False.
+  * **use_cache** (_Optional_ _[__bool_ _]__,__optional_) – If set to True, past_key_values key value states are returned. Defaults to False.
+  * **cache_position** (_Optional_ _[__torch.LongTensor_ _]__,__optional_) – Cache position useful for static cache applications . Defaults to None.
+  * **position_embeddings** (_Optional_ _[__Tuple_ _[__torch.Tensor_ _,__torch.Tensor_ _]__]__,__optional_) – If set to a tuple, it means the sin and cos are uniformly calculated by the outer LlamaModel and passed in. Defaults to None.
+
+
+Returns:
+    
+result
+Return type:
+    
+_type_
+_static_ fromTorch(_layer :Module_, _dtype :dtype=torch.float16_) → [LlamaAttention](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.LlamaAttention> "intel_npu_acceleration_library.nn.llm.LlamaAttention")[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.LlamaAttention.fromTorch> "Link to this definition")
+    
+Generate a NPU LlamaAttention layer from a transformer LlamaAttention one.
+Parameters:
+    
+  * **layer** (_torch.nn.Linear_) – the original LlamaAttention model to run on the NPU
+  * **dtype** (_torch.dtype_) – the desired datatype
+
+
+Returns:
+    
+A NPU LlamaAttention layer
+Return type:
+    
+[LlamaAttention](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.LlamaAttention> "intel_npu_acceleration_library.nn.llm.LlamaAttention")
+_class_ intel_npu_acceleration_library.nn.llm.PhiMLP(_parameters :List[Tensor]_)[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.PhiMLP> "Link to this definition")
+    
+Bases: `Module`
+Phi-2 MLP operation NPU backend.
+forward(_x :Tensor_) → Tensor[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.PhiMLP.forward> "Link to this definition")
+    
+Torch module forward method.
+Parameters:
+    
+**x** (_torch.Tensor_) – Input tensor
+Returns:
+    
+result
+Return type:
+    
+torch.Tensor
+_static_ fromTorch(_layer :Module_, _dtype :dtype=torch.float16_) → [PhiMLP](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.PhiMLP> "intel_npu_acceleration_library.nn.llm.PhiMLP")[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.PhiMLP.fromTorch> "Link to this definition")
+    
+Generate a NPU PhiMLP layer from a transformer one.
+Parameters:
+    
+  * **layer** (_torch.nn.Linear_) – the original PhiMLP model to run on the NPU
+  * **dtype** (_torch.dtype_) – the desired datatype
+
+
+Returns:
+    
+A NPU PhiMLP layer
+Return type:
+    
+[PhiMLP](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.PhiMLP> "intel_npu_acceleration_library.nn.llm.PhiMLP")
+intel_npu_acceleration_library.nn.llm.generate_with_static_shape(_model :Module_, _input_ids :Tensor_, _max_length :int_, _attention_mask :Tensor|None=None_, _use_past :bool|None=True_, _pad_token_id :int|None=None_, _** kwargs_) → Generator[int,None,None][#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.generate_with_static_shape> "Link to this definition")
+    
+Run LLM generator routine wiht static shapes.
+Parameters:
+    
+  * **model** (_torch.nn.Module_) – LLM mode
+  * **input_ids** (_torch.Tensor_) – model input_ids
+  * **max_length** (_int_) – model max lenght.
+  * **attention_mask** (_Optional_ _[__torch.Tensor_ _]__,__optional_) – input attention mask. Defaults to None.
+  * **use_past** (_Optional_ _[__bool_ _]__,__optional_) – Enable/disable KV caching. Defaults to True.
+  * **pad_token_id** (_Optional_ _[__int_ _]__,__optional_) – Padding token. Defaults to None.
+  * **kwargs** – Additional arguments
+
+
+Raises:
+    
+**RuntimeError** – pad_token_id is not set and needed for static shape generation
+Yields:
+    
+_Generator[int, None, None]_ – Return a generator of new tokens
+intel_npu_acceleration_library.nn.llm.lshift_insert(_tensor :Tensor_, _value :float_) → Tensor[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.lshift_insert> "Link to this definition")
+    
+Compute shift left and insert a value into a tensor.
+Parameters:
+    
+  * **tensor** (_torch.Tensor_) – input tensor
+  * **value** (_float_) – value to add
+
+
+Returns:
+    
+output tensor
+Return type:
+    
+torch.Tensor
+intel_npu_acceleration_library.nn.llm.warm_up_decoder_model(_tokenizer :AutoTokenizer_, _model :Module_, _model_seq_length :int_, _use_past :bool|None=True_)[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.warm_up_decoder_model> "Link to this definition")
+    
+Warm up the model on the NPU.
+This function JIT compile all the layers offloaded to the NPU and load and warm them into the NPU. This is particolarly useful for LLM decoders
+Parameters:
+    
+  * **tokenizer** (_AutoTokenizer_) – a tokenizer
+  * **model** (_torch.nn.Module_) – a torch Module representing a language model decoder
+  * **model_seq_length** (_int_) – Max sequence lenght for the tokenizer padding
+  * **use_past** (_Optional_ _[__bool_ _]__,__optional_) – Enable or Disable KV-caching. Defaults to True.
+
+
+## Module contents[#](https://intel.github.io/intel-npu-acceleration-library/python/<#module-intel_npu_acceleration_library.nn> "Link to this heading")
+_class_ intel_npu_acceleration_library.nn.Conv2d(_weights :Tensor_, _bias :Tensor|None=None_, _strides :int|Sequence[int]=1_, _padding :int|Sequence[int]=0_, _dilation :int|Sequence[int]=1_, _groups :int=1_)[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Conv2d> "Link to this definition")
+    
+Bases: `Module`
+2D convolutional layer implementation.
+Attrs:
+    
+weight (torch.Tensor): The weight tensor of the layer. bias (torch.Tensor): The bias tensor of the layer.
+_property_ bias _: Tensor_[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Conv2d.bias> "Link to this definition")
+    
+Get the bias tensor of the layer.
+Returns:
+    
+The bias tensor.
+Return type:
+    
+torch.Tensor
+forward(_x :Tensor_) → Tensor[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Conv2d.forward> "Link to this definition")
+    
+Torch module forward method.
+Parameters:
+    
+**x** (_torch.Tensor_) – Input tensor
+Returns:
+    
+result
+Return type:
+    
+torch.Tensor
+_static_ fromTorch(_layer_ , _dtype :dtype=torch.float16_) → [Conv2d](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Conv2d> "intel_npu_acceleration_library.nn.conv.Conv2d")[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Conv2d.fromTorch> "Link to this definition")
+    
+Create a Conv2d layer from a torch.nn.Conv2d layer.
+Parameters:
+    
+  * **layer** (_torch.nn.Conv2d_) – The torch Conv2d layer.
+  * **dtype** (_torch.dtype_ _,__optional_) – Data type of the layer.
+
+
+Returns:
+    
+The converted Conv2d layer.
+Return type:
+    
+[Conv2d](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Conv2d> "intel_npu_acceleration_library.nn.Conv2d")
+_property_ weight _: Tensor_[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Conv2d.weight> "Link to this definition")
+    
+Get the weight tensor of the layer.
+Returns:
+    
+The weight tensor.
+Return type:
+    
+torch.Tensor
+_class_ intel_npu_acceleration_library.nn.Linear(_weight :Tensor_, _bias :Tensor|None=None_)[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Linear> "Link to this definition")
+    
+Bases: `Module`
+Torch Linear operation NPU backend.
+forward(_x :Tensor_) → Tensor[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Linear.forward> "Link to this definition")
+    
+Torch module forward method.
+Parameters:
+    
+**x** (_torch.Tensor_) – Input tensor
+Returns:
+    
+result
+Return type:
+    
+torch.Tensor
+_static_ fromTensor(_weight :Tensor_, _bias :Tensor|None_, _dtype :dtype=torch.float16_) → [Linear](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.Linear> "intel_npu_acceleration_library.nn.linear.Linear")|[QuantizedLinear](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.QuantizedLinear> "intel_npu_acceleration_library.nn.linear.QuantizedLinear")[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Linear.fromTensor> "Link to this definition")
+    
+Generate a NPU Linear layer from a torch one.
+Parameters:
+    
+  * **weight** (_torch.Tensor_) – the original weight tensor
+  * **bias** (_Optional_ _[__torch.Tensor_ _]_) – the original bias tensor
+  * **dtype** (_torch.dtype_) – the desired datatype
+
+
+Raises:
+    
+**RuntimeError** – dtype not supported
+Returns:
+    
+A NPU linear layer
+Return type:
+    
+Union[[Linear](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Linear> "intel_npu_acceleration_library.nn.Linear"), [QuantizedLinear](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.QuantizedLinear> "intel_npu_acceleration_library.nn.QuantizedLinear")]
+_static_ fromTorch(_layer :Linear_, _dtype :dtype=torch.float16_) → [Linear](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.Linear> "intel_npu_acceleration_library.nn.linear.Linear")|[QuantizedLinear](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.QuantizedLinear> "intel_npu_acceleration_library.nn.linear.QuantizedLinear")[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Linear.fromTorch> "Link to this definition")
+    
+Generate a NPU Linear layer from a torch one.
+Parameters:
+    
+  * **layer** (_torch.nn.Linear_) – the original torch.nn.Linear model to run on the NPU
+  * **dtype** (_torch.dtype_) – the desired datatype
+
+
+Returns:
+    
+A NPU linear layer
+Return type:
+    
+Union[[Linear](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Linear> "intel_npu_acceleration_library.nn.Linear"), [QuantizedLinear](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.QuantizedLinear> "intel_npu_acceleration_library.nn.QuantizedLinear")]
+_class_ intel_npu_acceleration_library.nn.LlamaAttention(_config :LlamaConfig_, _q_weights :Tensor_, _kv_weights :Tensor_, _o_proj :Tensor_, _rotary_emb :Module_, _dtype :dtype=torch.float16_, _layer_idx :int|None=None_)[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.LlamaAttention> "Link to this definition")
+    
+Bases: `Module`
+LlamaAttention operation NPU backend.
+forward(_hidden_states :Tensor_, _attention_mask :Tensor|None=None_, _position_ids :Tensor|None=None_, _past_key_value :Cache|None=None_, _output_attentions :bool|None=False_, _use_cache :bool|None=False_, _cache_position :LongTensor|None=None_, _position_embeddings :Tuple[Tensor,Tensor]|None=None_)[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.LlamaAttention.forward> "Link to this definition")
+    
+Torch module forward method.
+Parameters:
+    
+  * **hidden_states** (_torch.Tensor_) – input to the layer of shape (batch, seq_len, embed_dim)
+  * **attention_mask** (_Optional_ _[__torch.Tensor_ _]__,__optional_) – attention mask of shape (batch_size, sequence_length). Defaults to None.
+  * **position_ids** (_Optional_ _[__torch.Tensor_ _]__,__optional_) – position_ids of shape (batch_size, sequence_length). Defaults to None.
+  * **past_key_value** (_Optional_ _[__Cache_ _]__,__optional_) – Pre-computed hidden-states (key and values in the self-attention blocks). Defaults to None.
+  * **output_attentions** (_Optional_ _[__bool_ _]__,__optional_) – Whether or not to return the attentions tensors of all attention layers.. Defaults to False.
+  * **use_cache** (_Optional_ _[__bool_ _]__,__optional_) – If set to True, past_key_values key value states are returned. Defaults to False.
+  * **cache_position** (_Optional_ _[__torch.LongTensor_ _]__,__optional_) – Cache position useful for static cache applications . Defaults to None.
+  * **position_embeddings** (_Optional_ _[__Tuple_ _[__torch.Tensor_ _,__torch.Tensor_ _]__]__,__optional_) – If set to a tuple, it means the sin and cos are uniformly calculated by the outer LlamaModel and passed in. Defaults to None.
+
+
+Returns:
+    
+result
+Return type:
+    
+_type_
+_static_ fromTorch(_layer :Module_, _dtype :dtype=torch.float16_) → [LlamaAttention](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.LlamaAttention> "intel_npu_acceleration_library.nn.llm.LlamaAttention")[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.LlamaAttention.fromTorch> "Link to this definition")
+    
+Generate a NPU LlamaAttention layer from a transformer LlamaAttention one.
+Parameters:
+    
+  * **layer** (_torch.nn.Linear_) – the original LlamaAttention model to run on the NPU
+  * **dtype** (_torch.dtype_) – the desired datatype
+
+
+Returns:
+    
+A NPU LlamaAttention layer
+Return type:
+    
+[LlamaAttention](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.LlamaAttention> "intel_npu_acceleration_library.nn.LlamaAttention")
+_class_ intel_npu_acceleration_library.nn.Module(_profile :bool=False_)[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Module> "Link to this definition")
+    
+Bases: `Module`
+A PyTorch module that runs on the NPU.
+create_model(_args :Sequence[Any]_, _kwargs :MutableMapping[str,Any]_) → [NNFactory](https://intel.github.io/intel-npu-acceleration-library/python/<intel_npu_acceleration_library.backend.html#intel_npu_acceleration_library.backend.factory.NNFactory> "intel_npu_acceleration_library.backend.factory.NNFactory")[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Module.create_model> "Link to this definition")
+    
+Create a model from the module.
+Parameters:
+    
+  * **args** (_Sequence_ _[__Any_ _]_) – positional arguments
+  * **kwargs** (_MutableMapping_ _[__str_ _,__Any_ _]_) – keyword arguments
+
+
+Returns:
+    
+The model.
+Return type:
+    
+[NNFactory](https://intel.github.io/intel-npu-acceleration-library/python/<intel_npu_acceleration_library.backend.html#intel_npu_acceleration_library.backend.factory.NNFactory> "intel_npu_acceleration_library.backend.factory.NNFactory")
+extract_tensors_from_arguments(_args :Sequence[Any]_) → Sequence[Tensor][#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Module.extract_tensors_from_arguments> "Link to this definition")
+    
+Extract the tensors from the arguments.
+Parameters:
+    
+**args** (_Sequence_ _[__Any_ _]_) – The positional arguments.
+Returns:
+    
+The tensors.
+Return type:
+    
+Sequence[torch.Tensor]
+factory_forward(_* args:Any_, _** kwargs:Any_)[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Module.factory_forward> "Link to this definition")
+    
+Run the model using the factory.
+Parameters:
+    
+  * **args** (_Any_) – The positional arguments.
+  * **kwargs** (_Any_) – The keyword arguments.
+
+
+Returns:
+    
+The output tensor.
+Return type:
+    
+torch.Tensor
+forward(_* args_, _** kwargs_) → Tensor[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Module.forward> "Link to this definition")
+    
+Run the forward pass of the module.
+Parameters:
+    
+  * **args** (_Any_) – The positional arguments.
+  * **kwargs** (_Any_) – The keyword arguments.
+
+
+Raises:
+    
+**NotImplementedError** – If the forward method is not implemented.
+Returns:
+    
+The output tensor.
+Return type:
+    
+torch.Tensor
+to(_* args_, _** kwargs_)[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Module.to> "Link to this definition")
+    
+Move the module to a device or to a different dtype.
+Parameters:
+    
+  * **args** (_Any_) – The positional arguments.
+  * **kwargs** (_Any_) – The keyword arguments.
+
+
+Returns:
+    
+The output tensor.
+Return type:
+    
+torch.Tensor
+_class_ intel_npu_acceleration_library.nn.PhiMLP(_parameters :List[Tensor]_)[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.PhiMLP> "Link to this definition")
+    
+Bases: `Module`
+Phi-2 MLP operation NPU backend.
+forward(_x :Tensor_) → Tensor[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.PhiMLP.forward> "Link to this definition")
+    
+Torch module forward method.
+Parameters:
+    
+**x** (_torch.Tensor_) – Input tensor
+Returns:
+    
+result
+Return type:
+    
+torch.Tensor
+_static_ fromTorch(_layer :Module_, _dtype :dtype=torch.float16_) → [PhiMLP](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.PhiMLP> "intel_npu_acceleration_library.nn.llm.PhiMLP")[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.PhiMLP.fromTorch> "Link to this definition")
+    
+Generate a NPU PhiMLP layer from a transformer one.
+Parameters:
+    
+  * **layer** (_torch.nn.Linear_) – the original PhiMLP model to run on the NPU
+  * **dtype** (_torch.dtype_) – the desired datatype
+
+
+Returns:
+    
+A NPU PhiMLP layer
+Return type:
+    
+[PhiMLP](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.PhiMLP> "intel_npu_acceleration_library.nn.PhiMLP")
+_class_ intel_npu_acceleration_library.nn.QuantizedLinear(_weight :Tensor_, _scale :Tensor_, _bias :Tensor|None=None_)[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.QuantizedLinear> "Link to this definition")
+    
+Bases: `Module`
+Torch Quantized Linear operation NPU backend.
+forward(_x :Tensor_) → Tensor[#](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.QuantizedLinear.forward> "Link to this definition")
+    
+Torch module forward method.
+Parameters:
+    
+**x** (_torch.Tensor_) – Input tensor
+Raises:
+    
+**RuntimeError** – Training is not supported for QuantizedLinear layer. Use .eval() to do inference only
+Returns:
+    
+result
+Return type:
+    
+torch.Tensor
+[ previous intel_npu_acceleration_library.backend package ](https://intel.github.io/intel-npu-acceleration-library/python/<intel_npu_acceleration_library.backend.html> "previous page") [ next intel_npu_acceleration_library.functional package ](https://intel.github.io/intel-npu-acceleration-library/python/<intel_npu_acceleration_library.functional.html> "next page")
+Contents 
+  * [Submodules](https://intel.github.io/intel-npu-acceleration-library/python/<#submodules>)
+  * [intel_npu_acceleration_library.nn.autograd module](https://intel.github.io/intel-npu-acceleration-library/python/<#intel-npu-acceleration-library-nn-autograd-module>)
+    * `[AutogradMatMul`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.autograd.AutogradMatMul>)
+      * `[AutogradMatMul.backward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.autograd.AutogradMatMul.backward>)
+      * `[AutogradMatMul.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.autograd.AutogradMatMul.forward>)
+  * [intel_npu_acceleration_library.nn.linear module](https://intel.github.io/intel-npu-acceleration-library/python/<#intel-npu-acceleration-library-nn-linear-module>)
+    * `[Linear`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.Linear>)
+      * `[Linear.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.Linear.forward>)
+      * `[Linear.fromTensor()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.Linear.fromTensor>)
+      * `[Linear.fromTorch()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.Linear.fromTorch>)
+    * `[QuantizedLinear`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.QuantizedLinear>)
+      * `[QuantizedLinear.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.linear.QuantizedLinear.forward>)
+  * [intel_npu_acceleration_library.nn.llm module](https://intel.github.io/intel-npu-acceleration-library/python/<#intel-npu-acceleration-library-nn-llm-module>)
+    * `[FusedLlamaMLP`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.FusedLlamaMLP>)
+      * `[FusedLlamaMLP.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.FusedLlamaMLP.forward>)
+      * `[FusedLlamaMLP.fromTorch()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.FusedLlamaMLP.fromTorch>)
+    * `[LlamaAttention`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.LlamaAttention>)
+      * `[LlamaAttention.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.LlamaAttention.forward>)
+      * `[LlamaAttention.fromTorch()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.LlamaAttention.fromTorch>)
+    * `[PhiMLP`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.PhiMLP>)
+      * `[PhiMLP.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.PhiMLP.forward>)
+      * `[PhiMLP.fromTorch()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.PhiMLP.fromTorch>)
+    * `[generate_with_static_shape()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.generate_with_static_shape>)
+    * `[lshift_insert()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.lshift_insert>)
+    * `[warm_up_decoder_model()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.llm.warm_up_decoder_model>)
+  * [Module contents](https://intel.github.io/intel-npu-acceleration-library/python/<#module-intel_npu_acceleration_library.nn>)
+    * `[Conv2d`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Conv2d>)
+      * `[Conv2d.bias`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Conv2d.bias>)
+      * `[Conv2d.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Conv2d.forward>)
+      * `[Conv2d.fromTorch()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Conv2d.fromTorch>)
+      * `[Conv2d.weight`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Conv2d.weight>)
+    * `[Linear`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Linear>)
+      * `[Linear.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Linear.forward>)
+      * `[Linear.fromTensor()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Linear.fromTensor>)
+      * `[Linear.fromTorch()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Linear.fromTorch>)
+    * `[LlamaAttention`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.LlamaAttention>)
+      * `[LlamaAttention.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.LlamaAttention.forward>)
+      * `[LlamaAttention.fromTorch()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.LlamaAttention.fromTorch>)
+    * `[Module`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Module>)
+      * `[Module.create_model()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Module.create_model>)
+      * `[Module.extract_tensors_from_arguments()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Module.extract_tensors_from_arguments>)
+      * `[Module.factory_forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Module.factory_forward>)
+      * `[Module.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Module.forward>)
+      * `[Module.to()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.Module.to>)
+    * `[PhiMLP`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.PhiMLP>)
+      * `[PhiMLP.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.PhiMLP.forward>)
+      * `[PhiMLP.fromTorch()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.PhiMLP.fromTorch>)
+    * `[QuantizedLinear`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.QuantizedLinear>)
+      * `[QuantizedLinear.forward()`](https://intel.github.io/intel-npu-acceleration-library/python/<#intel_npu_acceleration_library.nn.QuantizedLinear.forward>)
+
+
+By Intel Corporation 
+© Copyright 2024, Intel Corporation. 
